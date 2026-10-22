@@ -27,4 +27,3 @@ jobs:
         with:
           name: apk-file
           path: ./.buildozer/android/platform/build-*/dists/*/__armeabi-v7a/*.apk
-
