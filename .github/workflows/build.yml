@@ -1,29 +1,29 @@
-name: Build APK
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
+name: 构建安装包
+在……之上:
+推:
+分支机构: [主要的]
+workflow_dispatch:
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.10"
-      - name: Install dependencies
-        run: |
+工作:
+建立:
+连续的没有.现在的Ubuntu
+步骤:
+-uses: 操作/结帐@v4
+-姓名: 设置python
+uses: 操作/setup-python@v5
+和……一起:
+Python版: "3.10"
+-姓名: 安装相依性
+跑: |
           sudo apt update
           sudo apt install -y git zip unzip openjdk-17-jdk autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
           pip install buildozer kivy
       - name: Build APK
-        run: buildozer android debug
-      - name: Find APK
-        run: find . -name "*.apk"
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
+运行：buildozer android调试
+-名称：查找安装包
+运行：查找. -name"*.apk"
+-姓名没有.Upload APK
+uses: actions/upload-artifact@v4
+和……一起：
           name: apk-file
           path: ./.buildozer/android/platform/build-*/dists/*/__armeabi-v7a/*.apk
